@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7f2">
+  <title>Astral Cosmic Eunoia | Community Safety</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f7f2;
+      --surface: #fff;
+      --ink: #202923;
+      --muted: #68746c;
+      --line: #dce4dc;
+      --green: #176b4c;
+      --green-soft: #e5f2e9;
+      --lime: #d1ef79;
+      --red: #b73e39;
+      --red-soft: #fbe9e6;
+      --amber: #9a6416;
+      --amber-soft: #fff2d8;
+      --blue: #356789;
+      --blue-soft: #e8f1f6;
+      --shadow: 0 16px 42px rgb(30 48 36 / 10%);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background-color: var(--paper);
+      background-image: radial-gradient(#dce5dc 0.7px, transparent 0.7px);
+      background-size: 18px 18px;
+      color: var(--ink);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      font-size: 14px;
+    }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    .app-shell { min-height: 100vh; display: grid; grid-template-columns: 238px minmax(0, 1fr); }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 25px 17px 18px;
+      color: #edf5ed;
+      background: #202923;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; padding: 0 9px 27px; }
+    .brand-mark {
+      display: grid;
+      width: 37px;
+      height: 37px;
+      flex: 0 0 37px;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--lime);
+      color: #263328;
+      font-family: Georgia, serif;
+      font-size: 21px;
+      font-weight: 700;
+    }
+    .brand-title { margin: 0; font-family: Georgia, serif; font-size: 16px; font-weight: 600; }
+    .brand-subtitle { margin: 3px 0 0; color: #aebbb0; font-size: 10px; letter-spacing: .7px; text-transform: uppercase; }
+    .nav-label { padding: 0 10px; color: #9ba99e; font-size: 10px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+    .nav-list { display: grid; gap: 5px; margin: 10px 0 24px; }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      min-height: 39px;
+      padding: 0 11px;
+      border: 0;
+      border-radius: 7px;
+      background: transparent;
+      color: #c6d0c7;
+      text-align: left;
+    }
+    .nav-item:hover, .nav-item[aria-current="page"] { background: #344239; color: #fff; }
+    .nav-item[aria-current="page"] { box-shadow: inset 3px 0 var(--lime); }
+    .nav-count { color: #aebbb0; font-size: 12px; }
+    .sidebar-spacer { flex: 1; }
+    .sheet-card { padding: 14px 13px; border: 1px solid #46544a; border-radius: 8px; background: #29352c; }
+    .sheet-card-label { margin: 0 0 7px; color: #b4c0b5; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    .sheet-state { display: flex; align-items: center; gap: 7px; margin-bottom: 12px; color: #eef5ee; font-size: 12px; }
+    .state-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); }
+    .sheet-link { display: block; color: var(--lime); font-size: 12px; font-weight: 600; text-decoration: none; }
+    .sheet-link:hover { text-decoration: underline; }
+    .sidebar-foot { padding: 15px 9px 0; color: #9ba99e; font-size: 11px; line-height: 1.5; }
+    .main { min-width: 0; padding: 29px clamp(18px, 4vw, 54px) 50px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 30px; }
+    .crumb { color: var(--muted); font-size: 12px; }
+    .top-actions { display: flex; align-items: center; gap: 9px; }
+    .button {
+      display: inline-flex;
+      min-height: 38px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: background .16s ease, transform .16s ease;
+    }
+    .button:hover { background: #f4f8f3; transform: translateY(-1px); }
+    .button-primary { border-color: var(--green); background: var(--green); color: #fff; }
+    .button-primary:hover { background: #10593e; }
+    .button-symbol { font-size: 16px; line-height: 1; }
+    .heading-row { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 21px; }
+    .eyebrow { margin: 0 0 8px; color: var(--green); font-size: 10px; font-weight: 750; letter-spacing: 1.5px; text-transform: uppercase; }
+    h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(27px, 3vw, 37px); font-weight: 500; letter-spacing: 0; }
+    .page-description { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+    .date-label { color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 24px; }
+    .metric { min-height: 99px; padding: 17px 19px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); }
+    .metric-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .metric-label { color: var(--muted); font-size: 12px; }
+    .metric-mark { display: grid; width: 26px; height: 26px; place-items: center; border-radius: 7px; background: var(--green-soft); color: var(--green); font-size: 14px; }
+    .metric-mark.alert { background: var(--red-soft); color: var(--red); }
+    .metric-mark.neutral { background: #edf0eb; color: #4c5a50; }
+    .metric-value { margin-top: 8px; font-family: Georgia, serif; font-size: 27px; line-height: 1; }
+    .list-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 0 0 12px; }
+    .list-head h2 { margin: 0; font-family: Georgia, serif; font-size: 19px; font-weight: 500; }
+    .list-tools { display: flex; align-items: center; gap: 9px; }
+    .search-wrap { position: relative; }
+    .search-icon { position: absolute; top: 50%; left: 11px; color: #78847b; transform: translateY(-50%); }
+    .search-input { width: min(250px, 26vw); height: 36px; padding: 0 11px 0 32px; border: 1px solid var(--line); border-radius: 6px; background: white; outline: none; }
+    .search-input:focus, .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgb(23 107 76 / 12%); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th { height: 39px; padding: 0 13px; border-bottom: 1px solid var(--line); color: #78847b; font-size: 10px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; white-space: nowrap; }
+    td { height: 57px; padding: 9px 13px; border-bottom: 1px solid #edf1ec; color: #39443b; font-size: 12px; white-space: nowrap; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: #fafcf9; }
+    .case-id { color: #778379; font-size: 11px; }
+    .member { color: var(--ink); font-weight: 650; }
+    .category { color: var(--muted); }
+    .pill { display: inline-flex; align-items: center; min-height: 22px; padding: 0 8px; border-radius: 20px; font-size: 10px; font-weight: 700; }
+    .severity-low { background: #edf2ed; color: #58685a; }
+    .severity-medium { background: var(--amber-soft); color: var(--amber); }
+    .severity-high, .severity-critical { background: var(--red-soft); color: var(--red); }
+    .status-select { max-width: 126px; padding: 5px 20px 5px 8px; border: 1px solid transparent; border-radius: 5px; background-color: transparent; color: #405047; font-size: 11px; }
+    .status-select:hover, .status-select:focus { border-color: var(--line); background-color: white; }
+    .empty-state { padding: 45px 20px; color: var(--muted); text-align: center; }
+    .empty-state strong { display: block; margin-bottom: 6px; color: var(--ink); font-family: Georgia, serif; font-size: 18px; font-weight: 500; }
+    .table-footer { display: flex; justify-content: space-between; gap: 10px; padding: 11px 2px 0; color: var(--muted); font-size: 11px; }
+    dialog { width: min(510px, calc(100% - 28px)); max-height: min(90vh, 760px); padding: 0; overflow-y: auto; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+    dialog::backdrop { background: rgb(20 29 22 / 48%); backdrop-filter: blur(2px); }
+    .dialog-head { display: flex; justify-content: space-between; gap: 14px; padding: 21px 23px 16px; border-bottom: 1px solid var(--line); }
+    .dialog-head h2 { margin: 0; font-family: Georgia, serif; font-size: 22px; font-weight: 500; }
+    .dialog-head p { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+    .icon-button { width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 5px; background: white; color: var(--muted); font-size: 18px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 19px 23px 23px; }
+    .field { display: grid; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #566359; font-size: 11px; font-weight: 700; }
+    .field input, .field select, .field textarea { width: 100%; min-height: 37px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 5px; background: white; color: var(--ink); outline: none; }
+    .field textarea { min-height: 82px; resize: vertical; }
+    .form-actions { display: flex; justify-content: end; gap: 8px; grid-column: 1 / -1; padding-top: 5px; }
+    .toast { position: fixed; right: 22px; bottom: 22px; z-index: 5; max-width: min(390px, calc(100% - 44px)); padding: 12px 15px; border: 1px solid #c8d8ca; border-radius: 6px; background: #fff; box-shadow: var(--shadow); color: var(--ink); font-size: 12px; animation: arrive .2s ease-out; }
+    .toast[hidden] { display: none; }
+    @keyframes arrive { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 900px) {
+      .app-shell { grid-template-columns: 205px minmax(0, 1fr); }
+      .main { padding-right: 22px; padding-left: 22px; }
+      th, td { padding-right: 10px; padding-left: 10px; }
+    }
+    @media (max-width: 680px) {
+      .app-shell { display: block; }
+      .sidebar { min-height: 0; padding: 12px 14px; }
+      .brand { padding: 0 2px 11px; }
+      .nav-label, .sidebar-spacer, .sheet-card, .sidebar-foot { display: none; }
+      .nav-list { display: flex; gap: 4px; margin: 0; overflow-x: auto; }
+      .nav-item { width: auto; min-width: max-content; min-height: 34px; padding: 0 10px; font-size: 11px; }
+      .nav-count { margin-left: 7px; }
+      .main { padding: 19px 14px 35px; }
+      .topbar { margin-bottom: 23px; }
+      .top-actions .button { min-height: 34px; padding: 0 9px; font-size: 11px; }
+      .heading-row { align-items: start; }
+      .date-label { display: none; }
+      .metrics { gap: 7px; }
+      .metric { min-height: 86px; padding: 12px 10px; }
+      .metric-label { font-size: 10px; }
+      .metric-value { font-size: 23px; }
+      .metric-mark { width: 22px; height: 22px; }
+      .list-head { align-items: start; flex-direction: column; }
+      .list-tools { width: 100%; }
+      .search-wrap { flex: 1; }
+      .search-input { width: 100%; }
+      .list-tools .button { padding: 0 9px; }
+      table { min-width: 780px; }
+      .form-grid { grid-template-columns: 1fr; padding: 16px; }
+      .field.full, .form-actions { grid-column: auto; }
+      .dialog-head { padding: 17px 16px 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">A</div>
+        <div>
+          <p class="brand-title">Astral Cosmic Eunoia</p>
+          <p class="brand-subtitle">Community safety</p>
+        </div>
+      </div>
+      <div class="nav-label">Moderation</div>
+      <nav class="nav-list" aria-label="Case filters">
+        <button class="nav-item" type="button" data-filter="all" aria-current="page"><span>All cases</span><span class="nav-count" id="count-all">0</span></button>
+        <button class="nav-item" type="button" data-filter="active"><span>Needs review</span><span class="nav-count" id="count-active">0</span></button>
+        <button class="nav-item" type="button" data-filter="Actioned"><span>Actioned</span><span class="nav-count" id="count-actioned">0</span></button>
+        <button class="nav-item" type="button" data-filter="Resolved"><span>Resolved</span><span class="nav-count" id="count-resolved">0</span></button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <section class="sheet-card" aria-label="Spreadsheet connection">
+        <p class="sheet-card-label">Community spreadsheet</p>
+        <div class="sheet-state"><span class="state-dot" aria-hidden="true"></span>CSV handoff ready</div>
+        <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1MN1lXTlbsdIkfdsejcjSiORPvK9NTbI09naYtPlOTSA/edit?usp=sharing" target="_blank" rel="noreferrer">Open Google Sheet <span aria-hidden="true">↗</span></a>
+      </section>
+      <div class="sidebar-foot">Case data is saved in this browser. Use CSV to move records between this tracker and the sheet.</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb">Community operations <span aria-hidden="true">/</span> Violations</div>
+        <div class="top-actions">
+          <button class="button" id="import-button" type="button"><span class="button-symbol" aria-hidden="true">↑</span>Import CSV</button>
+          <button class="button" id="export-button" type="button"><span class="button-symbol" aria-hidden="true">↓</span>Export CSV</button>
+          <form action="/api/logout" method="post"><button class="button" type="submit">Sign out</button></form>
+        </div>
+      </header>
+
+      <section class="heading-row">
+        <div>
+          <p class="eyebrow">Astral Cosmic Eunoia</p>
+          <h1>Violation tracker</h1>
+          <p class="page-description">A clear record of reports, reviews, and moderator actions.</p>
+        </div>
+        <div class="date-label" id="today-label"></div>
+      </section>
+
+      <section class="metrics" aria-label="Case overview">
+        <article class="metric"><div class="metric-top"><span class="metric-label">Open cases</span><span class="metric-mark" aria-hidden="true">◷</span></div><div class="metric-value" id="metric-open">0</div></article>
+        <article class="metric"><div class="metric-top"><span class="metric-label">High priority</span><span class="metric-mark alert" aria-hidden="true">!</span></div><div class="metric-value" id="metric-priority">0</div></article>
+        <article class="metric"><div class="metric-top"><span class="metric-label">Resolved this month</span><span class="metric-mark neutral" aria-hidden="true">✓</span></div><div class="metric-value" id="metric-resolved">0</div></article>
+      </section>
+
+      <section aria-labelledby="case-list-title">
+        <div class="list-head">
+          <h2 id="case-list-title">Case log</h2>
+          <div class="list-tools">
+            <label class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input class="search-input" id="search-input" type="search" placeholder="Search cases" aria-label="Search cases"></label>
+            <button class="button button-primary" id="new-case-button" type="button"><span class="button-symbol" aria-hidden="true">+</span>New report</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Case</th><th>Member</th><th>Violation</th><th>Severity</th><th>Status</th><th>Reported</th><th>Moderator</th></tr></thead>
+            <tbody id="case-rows"></tbody>
+          </table>
+          <div class="empty-state" id="empty-state"><strong>No reports yet</strong>New reports will appear here as your team logs them.</div>
+        </div>
+        <div class="table-footer"><span id="result-count">0 cases</span><span>Updates are stored in this browser</span></div>
+      </section>
+      <input id="file-input" type="file" accept=".csv,text/csv" hidden>
+    </main>
+  </div>
+
+  <dialog id="case-dialog" aria-labelledby="dialog-title">
+    <form id="case-form">
+      <div class="dialog-head">
+        <div><h2 id="dialog-title">Log a report</h2><p>Keep notes factual and limited to moderation context.</p></div>
+        <button class="icon-button" id="close-dialog" type="button" aria-label="Close form">×</button>
+      </div>
+      <div class="form-grid">
+        <div class="field"><label for="member-input">Member name *</label><input id="member-input" name="username" maxlength="80" required placeholder="Community username"></div>
+        <div class="field"><label for="category-input">Violation type *</label><select id="category-input" name="category" required><option value="">Choose type</option><option>Harassment</option><option>Hate speech</option><option>Spam</option><option>Inappropriate content</option><option>Spoilers</option><option>Impersonation</option><option>Other</option></select></div>
+        <div class="field"><label for="severity-input">Severity *</label><select id="severity-input" name="severity" required><option value="Low">Low</option><option value="Medium" selected>Medium</option><option value="High">High</option><option value="Critical">Critical</option></select></div>
+        <div class="field"><label for="date-input">Report date *</label><input id="date-input" name="date" type="date" required></div>
+        <div class="field"><label for="status-input">Status</label><select id="status-input" name="status"><option>New</option><option>Reviewing</option><option>Actioned</option><option>Resolved</option></select></div>
+        <div class="field"><label for="moderator-input">Assigned moderator</label><input id="moderator-input" name="moderator" maxlength="80" placeholder="Unassigned"></div>
+        <div class="field full"><label for="notes-input">Notes</label><textarea id="notes-input" name="notes" maxlength="1200" placeholder="Brief context, relevant channel, and action taken"></textarea></div>
+        <div class="form-actions"><button class="button" id="cancel-dialog" type="button">Cancel</button><button class="button button-primary" type="submit">Save report</button></div>
+      </div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script>
+    (() => {
+      const storageKey = "ace-violation-tracker-cases-v1";
+      const statuses = ["New", "Reviewing", "Actioned", "Resolved"];
+      const elements = {
+        rows: document.querySelector("#case-rows"),
+        empty: document.querySelector("#empty-state"),
+        dialog: document.querySelector("#case-dialog"),
+        form: document.querySelector("#case-form"),
+        search: document.querySelector("#search-input"),
+        file: document.querySelector("#file-input"),
+        toast: document.querySelector("#toast")
+      };
+      let cases = loadCases();
+      let activeFilter = "all";
+      let toastTimer;
+
+      function loadCases() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
+          return Array.isArray(saved) ? saved.filter(isCase) : [];
+        } catch {
+          return [];
+        }
+      }
+
+      function isCase(item) {
+        return item && typeof item.id === "string" && typeof item.username === "string" && typeof item.category === "string" && statuses.includes(item.status);
+      }
+
+      function saveCases() {
+        localStorage.setItem(storageKey, JSON.stringify(cases));
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "").replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+      }
+
+      function formatDate(value) {
+        if (!value) return "—";
+        const date = new Date(`${value}T00:00:00`);
+        return Number.isNaN(date.getTime()) ? "—" : new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", year: "numeric" }).format(date);
+      }
+
+      function filteredCases() {
+        const query = elements.search.value.trim().toLocaleLowerCase();
+        return cases.filter(item => {
+          const matchesFilter = activeFilter === "all" || (activeFilter === "active" ? ["New", "Reviewing"].includes(item.status) : item.status === activeFilter);
+          const searchable = [item.id, item.username, item.category, item.severity, item.status, item.moderator, item.notes].join(" ").toLocaleLowerCase();
+          return matchesFilter && searchable.includes(query);
+        }).sort((first, second) => second.date.localeCompare(first.date) || second.id.localeCompare(first.id));
+      }
+
+      function render() {
+        const visible = filteredCases();
+        elements.rows.innerHTML = visible.map(item => {
+          const severityClass = `severity-${String(item.severity).toLowerCase()}`;
+          const statusOptions = statuses.map(status => `<option${status === item.status ? " selected" : ""}>${status}</option>`).join("");
+          return `<tr>
+            <td><span class="case-id">${escapeHtml(item.id)}</span></td>
+            <td><span class="member">${escapeHtml(item.username)}</span></td>
+            <td><span class="category">${escapeHtml(item.category)}</span></td>
+            <td><span class="pill ${severityClass}">${escapeHtml(item.severity)}</span></td>
+            <td><select class="status-select" data-case-id="${escapeHtml(item.id)}" aria-label="Status for ${escapeHtml(item.id)}">${statusOptions}</select></td>
+            <td>${escapeHtml(formatDate(item.date))}</td>
+            <td>${escapeHtml(item.moderator || "Unassigned")}</td>
+          </tr>`;
+        }).join("");
+        elements.empty.hidden = visible.length > 0;
+        document.querySelector("#result-count").textContent = `${visible.length} ${visible.length === 1 ? "case" : "cases"}`;
+        document.querySelector("#count-all").textContent = cases.length;
+        document.querySelector("#count-active").textContent = cases.filter(item => ["New", "Reviewing"].includes(item.status)).length;
+        document.querySelector("#count-actioned").textContent = cases.filter(item => item.status === "Actioned").length;
+        document.querySelector("#count-resolved").textContent = cases.filter(item => item.status === "Resolved").length;
+        document.querySelector("#metric-open").textContent = cases.filter(item => ["New", "Reviewing"].includes(item.status)).length;
+        document.querySelector("#metric-priority").textContent = cases.filter(item => ["High", "Critical"].includes(item.severity) && item.status !== "Resolved").length;
+        const now = new Date();
+        document.querySelector("#metric-resolved").textContent = cases.filter(item => {
+          if (item.status !== "Resolved" || !item.date) return false;
+          const date = new Date(`${item.date}T00:00:00`);
+          return date.getFullYear() === now.getFullYear() && date.getMonth() === now.getMonth();
+        }).length;
+      }
+
+      function showToast(message) {
+        elements.toast.textContent = message;
+        elements.toast.hidden = false;
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => { elements.toast.hidden = true; }, 3200);
+      }
+
+      function makeCaseId() {
+        const datePart = new Date().toISOString().slice(2, 10).replaceAll("-", "");
+        let id;
+        do { id = `ACE-${datePart}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`; }
+        while (cases.some(item => item.id === id));
+        return id;
+      }
+
+      function csvCell(value) {
+        const text = String(value ?? "");
+        return `"${text.replaceAll('"', '""')}"`;
+      }
+
+      function exportCsv() {
+        const headers = ["case_id", "username", "category", "severity", "reported_at", "status", "moderator", "notes"];
+        const lines = [headers, ...cases.map(item => [item.id, item.username, item.category, item.severity, item.date, item.status, item.moderator, item.notes])].map(row => row.map(csvCell).join(","));
+        const blob = new Blob(["\ufeff", lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = `astral-violation-cases-${new Date().toISOString().slice(0, 10)}.csv`;
+        link.click();
+        URL.revokeObjectURL(link.href);
+        showToast("CSV exported. Import it into the Google Sheet to update the shared log.");
+      }
+
+      function parseCsv(text) {
+        const matrix = [];
+        let row = [];
+        let cell = "";
+        let quoted = false;
+        for (let index = 0; index < text.length; index += 1) {
+          const character = text[index];
+          if (quoted && character === '"' && text[index + 1] === '"') { cell += '"'; index += 1; }
+          else if (character === '"') quoted = !quoted;
+          else if (character === "," && !quoted) { row.push(cell); cell = ""; }
+          else if ((character === "\n" || character === "\r") && !quoted) {
+            if (character === "\r" && text[index + 1] === "\n") index += 1;
+            row.push(cell); matrix.push(row); row = []; cell = "";
+          } else cell += character;
+        }
+        if (cell.length || row.length) { row.push(cell); matrix.push(row); }
+        return matrix.filter(line => line.some(value => value.trim() !== ""));
+      }
+
+      function importCsv(text) {
+        const matrix = parseCsv(text.replace(/^\ufeff/, ""));
+        if (matrix.length < 2) throw new Error("The CSV has no case rows.");
+        const headers = matrix[0].map(value => value.trim().toLowerCase().replace(/[\s-]+/g, "_").replace(/[()]/g, ""));
+        const indexOf = (...names) => headers.findIndex(header => names.includes(header));
+        const columns = {
+          id: indexOf("case_id", "id"),
+          username: indexOf("username", "member", "member_name"),
+          category: indexOf("category", "violation", "violation_type"),
+          severity: indexOf("severity"),
+          date: indexOf("reported_at", "date", "report_date"),
+          status: indexOf("status"),
+          moderator: indexOf("moderator", "assigned_moderator"),
+          notes: indexOf("notes", "details")
+        };
+        if ([columns.username, columns.category, columns.status].some(index => index < 0)) throw new Error("Required headers: username, category, and status.");
+        const imported = matrix.slice(1).map(row => {
+          const value = name => columns[name] < 0 ? "" : (row[columns[name]] || "").trim();
+          const status = statuses.find(option => option.toLowerCase() === value("status").toLowerCase());
+          const severity = ["Low", "Medium", "High", "Critical"].find(option => option.toLowerCase() === value("severity").toLowerCase()) || "Medium";
+          return {
+            id: value("id") || makeCaseId(),
+            username: value("username"),
+            category: value("category"),
+            severity,
+            date: value("date"),
+            status: status || "New",
+            moderator: value("moderator"),
+            notes: value("notes")
+          };
+        }).filter(item => item.username && item.category);
+        const byId = new Map(cases.map(item => [item.id, item]));
+        imported.forEach(item => byId.set(item.id, item));
+        const added = imported.filter(item => !cases.some(existing => existing.id === item.id)).length;
+        const updated = imported.length - added;
+        cases = [...byId.values()];
+        saveCases();
+        render();
+        showToast(`Imported ${added} new ${added === 1 ? "case" : "cases"}; updated ${updated} existing.`);
+      }
+
+      document.querySelector("#today-label").textContent = new Intl.DateTimeFormat(undefined, { weekday: "long", month: "long", day: "numeric" }).format(new Date());
+      document.querySelector("#new-case-button").addEventListener("click", () => {
+        elements.form.reset();
+        elements.form.elements.date.value = new Date().toISOString().slice(0, 10);
+        elements.dialog.showModal();
+        elements.form.elements.username.focus();
+      });
+      document.querySelector("#close-dialog").addEventListener("click", () => elements.dialog.close());
+      document.querySelector("#cancel-dialog").addEventListener("click", () => elements.dialog.close());
+      elements.form.addEventListener("submit", event => {
+        event.preventDefault();
+        const formData = new FormData(elements.form);
+        cases.push({
+          id: makeCaseId(),
+          username: formData.get("username").trim(),
+          category: formData.get("category"),
+          severity: formData.get("severity"),
+          date: formData.get("date"),
+          status: formData.get("status"),
+          moderator: formData.get("moderator").trim(),
+          notes: formData.get("notes").trim()
+        });
+        saveCases();
+        render();
+        elements.dialog.close();
+        showToast("Report saved in this browser.");
+      });
+      elements.rows.addEventListener("change", event => {
+        if (!event.target.matches(".status-select")) return;
+        const item = cases.find(record => record.id === event.target.dataset.caseId);
+        if (item) { item.status = event.target.value; saveCases(); render(); }
+      });
+      elements.search.addEventListener("input", render);
+      document.querySelectorAll(".nav-item").forEach(button => button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+        document.querySelectorAll(".nav-item").forEach(item => item.removeAttribute("aria-current"));
+        button.setAttribute("aria-current", "page");
+        render();
+      }));
+      document.querySelector("#export-button").addEventListener("click", exportCsv);
+      document.querySelector("#import-button").addEventListener("click", () => elements.file.click());
+      elements.form.addEventListener("keydown", event => {
+        if (event.key === "Escape" && elements.dialog.open) elements.dialog.close();
+      });
+      elements.file.addEventListener("change", async () => {
+        const file = elements.file.files[0];
+        if (!file) return;
+        try { importCsv(await file.text()); }
+        catch (error) { showToast(error.message || "Could not read that CSV file."); }
+        elements.file.value = "";
+      });
+      render();
+    })();
+  </script>
+</body>
+</html>

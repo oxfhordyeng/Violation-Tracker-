@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183d31">
+  <title>Member access | Astral Cosmic Eunoia</title>
+  <style>
+    :root { color-scheme: light; --ink: #202923; --muted: #66756c; --green: #183d31; --lime: #d1ef79; --line: #dce4dc; }
+    * { box-sizing: border-box; }
+    body { display: grid; min-width: 320px; min-height: 100vh; margin: 0; place-items: center; background: #edf2ec; color: var(--ink); font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; }
+    .portal { display: grid; width: min(960px, calc(100% - 36px)); min-height: 570px; grid-template-columns: 1.06fr .94fr; overflow: hidden; border: 1px solid #d8e1d8; border-radius: 9px; background: #fff; box-shadow: 0 24px 70px rgb(27 52 37 / 14%); }
+    .welcome { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 570px; overflow: hidden; padding: 36px 40px; background-color: var(--green); background-image: linear-gradient(135deg, transparent 49.8%, rgb(255 255 255 / 5%) 50%, transparent 50.2%), linear-gradient(45deg, transparent 49.8%, rgb(255 255 255 / 4%) 50%, transparent 50.2%); background-size: 34px 34px; color: #f5f8f4; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { display: grid; width: 39px; height: 39px; place-items: center; border-radius: 10px; background: var(--lime); color: #263328; font-family: Georgia, serif; font-size: 22px; font-weight: 700; }
+    .brand-name { margin: 0; font-family: Georgia, serif; font-size: 17px; }
+    .brand-caption { margin: 4px 0 0; color: #becdc1; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+    .welcome-copy { position: relative; z-index: 1; max-width: 390px; padding: 36px 0; }
+    .eyebrow { margin: 0 0 15px; color: var(--lime); font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; }
+    h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 5vw, 50px); font-weight: 500; line-height: 1.06; }
+    .welcome-copy p:last-child { max-width: 330px; margin: 17px 0 0; color: #d0dbd1; font-size: 14px; line-height: 1.7; }
+    .welcome-foot { color: #b2c2b5; font-size: 11px; }
+    .access { display: flex; flex-direction: column; justify-content: center; padding: 45px clamp(26px, 5vw, 58px); }
+    .access-kicker { margin: 0 0 10px; color: #176b4c; font-size: 10px; font-weight: 750; letter-spacing: 1.4px; text-transform: uppercase; }
+    h2 { margin: 0; font-family: Georgia, serif; font-size: 29px; font-weight: 500; }
+    .access-intro { margin: 9px 0 28px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    label { display: block; margin-bottom: 7px; color: #435148; font-size: 11px; font-weight: 700; }
+    input { width: 100%; height: 44px; padding: 0 12px; border: 1px solid var(--line); border-radius: 5px; outline: none; color: var(--ink); }
+    input:focus { border-color: #176b4c; box-shadow: 0 0 0 3px rgb(23 107 76 / 12%); }
+    button { width: 100%; min-height: 43px; margin-top: 14px; border: 0; border-radius: 5px; background: #176b4c; color: white; font-size: 12px; font-weight: 700; }
+    button:hover { background: #10593e; }
+    button:disabled { cursor: wait; opacity: .7; }
+    .error { min-height: 18px; margin: 10px 0 0; color: #b73e39; font-size: 12px; }
+    .access-note { margin-top: 25px; padding-top: 17px; border-top: 1px solid #e8ede8; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    @media (max-width: 650px) {
+      body { display: block; padding: 15px 0; }
+      .portal { width: min(480px, calc(100% - 24px)); min-height: auto; grid-template-columns: 1fr; margin: 0 auto; }
+      .welcome { min-height: 270px; padding: 22px; }
+      .welcome-copy { padding: 25px 0 17px; }
+      h1 { font-size: 34px; }
+      .welcome-copy p:last-child { margin-top: 10px; font-size: 12px; }
+      .welcome-foot { font-size: 10px; }
+      .access { padding: 30px 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <main class="portal">
+    <section class="welcome" aria-label="Welcome">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">A</div>
+        <div><p class="brand-name">Astral Cosmic Eunoia</p><p class="brand-caption">Community member portal</p></div>
+      </div>
+      <div class="welcome-copy">
+        <p class="eyebrow">A considered space for fans</p>
+        <h1>Good stories.<br>Better community.</h1>
+        <p>Welcome to the community safety portal. Sign in to continue to the moderation tracker.</p>
+      </div>
+      <div class="welcome-foot">Astral Cosmic Eunoia · Member access</div>
+    </section>
+    <section class="access" aria-labelledby="access-title">
+      <p class="access-kicker">Member entry</p>
+      <h2 id="access-title">Enter passcode</h2>
+      <p class="access-intro">Use the community passcode shared with your moderation team.</p>
+      <form id="access-form">
+        <label for="passcode">Passcode</label>
+        <input id="passcode" name="passcode" type="password" autocomplete="current-password" required minlength="1" autofocus>
+        <button id="submit-button" type="submit">Continue to tracker</button>
+        <p class="error" id="error-message" role="alert" aria-live="polite"></p>
+      </form>
+      <p class="access-note">Access is limited to authorized community members. Close this page when using a shared device.</p>
+    </section>
+  </main>
+  <script>
+    const form = document.querySelector("#access-form");
+    const input = document.querySelector("#passcode");
+    const submitButton = document.querySelector("#submit-button");
+    const errorMessage = document.querySelector("#error-message");
+
+    fetch("/api/session", { credentials: "same-origin" })
+      .then(response => response.json())
+      .then(session => { if (session.authenticated) window.location.replace("/tracker"); })
+      .catch(() => { errorMessage.textContent = "Portal unavailable. Refresh and try again."; });
+
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+      errorMessage.textContent = "";
+      submitButton.disabled = true;
+      submitButton.textContent = "Checking access…";
+      try {
+        const response = await fetch("/api/login", {
+          method: "POST",
+          credentials: "same-origin",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ passcode: input.value })
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Could not verify passcode.");
+        window.location.assign("/tracker");
+      } catch (error) {
+        errorMessage.textContent = error.message || "Portal unavailable. Try again.";
+        input.value = "";
+        input.focus();
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Continue to tracker";
+      }
+    });
+  </script>
+</body>
+</html>
