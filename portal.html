@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4c3266">
+  <title>ACE-CHRYSALIS | Member Access</title>
+  <style>
+    :root { color-scheme: light; --ink: #2a2531; --muted: #706878; --green: #633d87; --lime: #d9c4ec; --line: #e4dce9; }
+    * { box-sizing: border-box; }
+    body { display: grid; min-width: 320px; min-height: 100vh; margin: 0; place-items: center; background: #f3eff7; color: var(--ink); font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; }
+    .portal { display: grid; width: min(960px, calc(100% - 36px)); min-height: 570px; grid-template-columns: 1.06fr .94fr; overflow: hidden; border: 1px solid #e0d8e8; border-radius: 9px; background: #fff; box-shadow: 0 24px 70px rgb(57 36 76 / 14%); }
+    .welcome { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 570px; overflow: hidden; padding: 36px 40px; background-color: var(--green); background-image: linear-gradient(135deg, transparent 49.8%, rgb(255 255 255 / 5%) 50%, transparent 50.2%), linear-gradient(45deg, transparent 49.8%, rgb(255 255 255 / 4%) 50%, transparent 50.2%); background-size: 34px 34px; color: #f5f8f4; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { display: grid; width: 39px; height: 39px; place-items: center; border-radius: 10px; background: var(--lime); color: #33283f; font-family: Georgia, serif; font-size: 22px; font-weight: 700; }
+    .brand-name { margin: 0; font-family: Georgia, serif; font-size: 17px; }
+    .brand-caption { margin: 4px 0 0; color: #cbbbd8; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+    .welcome-copy { position: relative; z-index: 1; max-width: 390px; padding: 36px 0; }
+    .eyebrow { margin: 0 0 15px; color: var(--lime); font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; }
+    h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 5vw, 50px); font-weight: 500; line-height: 1.06; }
+    .welcome-copy p:last-child { max-width: 330px; margin: 17px 0 0; color: #ded4e5; font-size: 14px; line-height: 1.7; }
+    .welcome-foot { color: #c8b8d3; font-size: 11px; }
+    .access { display: flex; flex-direction: column; justify-content: center; padding: 45px clamp(26px, 5vw, 58px); }
+    .access-kicker { margin: 0 0 10px; color: var(--green); font-size: 10px; font-weight: 750; letter-spacing: 1.4px; text-transform: uppercase; }
+    h2 { margin: 0; font-family: Georgia, serif; font-size: 29px; font-weight: 500; }
+    .access-intro { margin: 9px 0 28px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    label { display: block; margin-bottom: 7px; color: #435148; font-size: 11px; font-weight: 700; }
+    input { width: 100%; height: 44px; padding: 0 12px; border: 1px solid var(--line); border-radius: 5px; outline: none; color: var(--ink); }
+    input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgb(99 61 135 / 12%); }
+    button { width: 100%; min-height: 43px; margin-top: 14px; border: 0; border-radius: 5px; background: var(--green); color: white; font-size: 12px; font-weight: 700; }
+    button:hover { background: #4e2d6f; }
+    button:disabled { cursor: wait; opacity: .7; }
+    .error { min-height: 18px; margin: 10px 0 0; color: #b73e39; font-size: 12px; }
+    .access-note { margin-top: 25px; padding-top: 17px; border-top: 1px solid #e8ede8; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .role-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin: 0 0 20px; padding: 3px; border: 1px solid var(--line); border-radius: 6px; background: #f3eef7; }
+    .role-switch button { min-height: 34px; margin: 0; border-radius: 4px; background: transparent; color: var(--muted); }
+    .role-switch button[aria-pressed="true"] { background: white; box-shadow: 0 1px 3px rgb(30 48 36 / 12%); color: var(--ink); }
+    [hidden] { display: none !important; }
+    @media (max-width: 650px) {
+      body { display: block; padding: 15px 0; }
+      .portal { width: min(480px, calc(100% - 24px)); min-height: auto; grid-template-columns: 1fr; margin: 0 auto; }
+      .welcome { min-height: 270px; padding: 22px; }
+      .welcome-copy { padding: 25px 0 17px; }
+      h1 { font-size: 34px; }
+      .welcome-copy p:last-child { margin-top: 10px; font-size: 12px; }
+      .welcome-foot { font-size: 10px; }
+      .access { padding: 30px 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <main class="portal">
+    <section class="welcome" aria-label="Welcome">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">A</div>
+        <div><p class="brand-name">ACE-CHRYSALIS</p><p class="brand-caption">Community member portal</p></div>
+      </div>
+      <div class="welcome-copy">
+        <p class="eyebrow">A considered space for fans</p>
+        <h1>Good stories.<br>Better community.</h1>
+        <p>Welcome to the community safety portal. Sign in to continue to the moderation tracker.</p>
+      </div>
+      <div class="welcome-foot">ACE-CHRYSALIS · Member access</div>
+    </section>
+    <section class="access" aria-labelledby="access-title">
+      <p class="access-kicker" id="access-kicker">Community member portal</p>
+      <h2 id="access-title">View your record</h2>
+      <p class="access-intro" id="access-intro">Sign in with the member name and passcode provided by your moderation team.</p>
+      <div class="role-switch" id="role-switch" role="group" aria-label="Sign-in type">
+        <button type="button" data-role="member" aria-pressed="true">Member</button>
+        <button type="button" data-role="admin" aria-pressed="false">Moderator</button>
+      </div>
+      <form id="access-form">
+        <div id="username-field">
+          <label for="username">Member name</label>
+          <input id="username" name="username" autocomplete="username" maxlength="80">
+        </div>
+        <label for="passcode" id="passcode-label">Member passcode</label>
+        <input id="passcode" name="passcode" type="password" autocomplete="current-password" required minlength="1" autofocus>
+        <button id="submit-button" type="submit">View my record</button>
+        <p class="error" id="error-message" role="alert" aria-live="polite"></p>
+      </form>
+      <p class="access-note" id="access-note">Your sign-in only shows cases filed under your member name. Close this page when using a shared device.</p>
+    </section>
+  </main>
+  <script>
+    const form = document.querySelector("#access-form");
+    const input = document.querySelector("#passcode");
+    const username = document.querySelector("#username");
+    const usernameField = document.querySelector("#username-field");
+    const roleSwitch = document.querySelector("#role-switch");
+    const submitButton = document.querySelector("#submit-button");
+    const errorMessage = document.querySelector("#error-message");
+    const title = document.querySelector("#access-title");
+    const intro = document.querySelector("#access-intro");
+    const kicker = document.querySelector("#access-kicker");
+    const note = document.querySelector("#access-note");
+    const passcodeLabel = document.querySelector("#passcode-label");
+    let role = "member";
+    let setupRequired = false;
+
+    fetch("/api/session", { credentials: "same-origin" })
+      .then(response => response.json())
+      .then(session => {
+        if (session.authenticated) {
+          window.location.replace(session.role === "admin" ? "/tracker" : "/member");
+          return;
+        }
+        setupRequired = session.setupRequired;
+        if (setupRequired) {
+          roleSwitch.hidden = true;
+          usernameField.hidden = true;
+          username.required = false;
+          kicker.textContent = "First-time setup";
+          title.textContent = "Create administrator access";
+          intro.textContent = "Choose a private passcode to secure the moderation dashboard.";
+          passcodeLabel.textContent = "Administrator passcode";
+          input.autocomplete = "new-password";
+          input.minLength = 12;
+          submitButton.textContent = "Create administrator access";
+          note.textContent = "Keep this passcode private. You will use it to create member accounts and manage case records.";
+        }
+      })
+      .catch(() => { errorMessage.textContent = "Portal unavailable. Refresh and try again."; });
+
+    roleSwitch.addEventListener("click", event => {
+      const button = event.target.closest("[data-role]");
+      if (!button || setupRequired) return;
+      role = button.dataset.role;
+      roleSwitch.querySelectorAll("[data-role]").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+      usernameField.hidden = role !== "member";
+      username.required = role === "member";
+      title.textContent = role === "member" ? "View your record" : "Moderator sign in";
+      intro.textContent = role === "member"
+        ? "Sign in with the member name and passcode provided by your moderation team."
+        : "Sign in to review reports and manage member access.";
+      passcodeLabel.textContent = role === "member" ? "Member passcode" : "Administrator passcode";
+      submitButton.textContent = role === "member" ? "View my record" : "Open moderation tracker";
+      errorMessage.textContent = "";
+    });
+
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+      errorMessage.textContent = "";
+      submitButton.disabled = true;
+      submitButton.textContent = "Checking access…";
+      try {
+        const response = await fetch(setupRequired ? "/api/setup" : "/api/login", {
+          method: "POST",
+          credentials: "same-origin",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(setupRequired ? { passcode: input.value } : { role, username: username.value.trim(), passcode: input.value })
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Could not verify passcode.");
+        window.location.assign(setupRequired || role === "admin" ? "/tracker" : "/member");
+      } catch (error) {
+        errorMessage.textContent = error.message || "Portal unavailable. Try again.";
+        input.value = "";
+        input.focus();
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Continue to tracker";
+      }
+    });
+  </script>
+</body>
+</html>
