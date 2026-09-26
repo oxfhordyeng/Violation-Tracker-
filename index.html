@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f7f2">
-  <title>Astral Cosmic Eunoia | Community Safety</title>
+  <meta name="theme-color" content="#f6f2f8">
+  <title>ACE-CHRYSALIS | Community Safety</title>
   <style>
     :root {
       color-scheme: light;
-      --paper: #f4f7f2;
+      --paper: #f6f2f8;
       --surface: #fff;
-      --ink: #202923;
-      --muted: #68746c;
-      --line: #dce4dc;
-      --green: #176b4c;
-      --green-soft: #e5f2e9;
-      --lime: #d1ef79;
+      --ink: #2a2531;
+      --muted: #706878;
+      --line: #e4dce9;
+      --green: #633d87;
+      --green-soft: #f0e8f7;
+      --lime: #d9c4ec;
       --red: #b73e39;
       --red-soft: #fbe9e6;
       --amber: #9a6416;
@@ -30,7 +30,7 @@
       margin: 0;
       min-width: 320px;
       background-color: var(--paper);
-      background-image: radial-gradient(#dce5dc 0.7px, transparent 0.7px);
+      background-image: radial-gradient(#e6ddeb 0.7px, transparent 0.7px);
       background-size: 18px 18px;
       color: var(--ink);
       font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
@@ -45,8 +45,8 @@
       flex-direction: column;
       min-height: 100vh;
       padding: 25px 17px 18px;
-      color: #edf5ed;
-      background: #202923;
+      color: #f2edf5;
+      background: #292333;
     }
     .brand { display: flex; align-items: center; gap: 11px; padding: 0 9px 27px; }
     .brand-mark {
@@ -57,14 +57,14 @@
       place-items: center;
       border-radius: 11px;
       background: var(--lime);
-      color: #263328;
+      color: #33283f;
       font-family: Georgia, serif;
       font-size: 21px;
       font-weight: 700;
     }
     .brand-title { margin: 0; font-family: Georgia, serif; font-size: 16px; font-weight: 600; }
-    .brand-subtitle { margin: 3px 0 0; color: #aebbb0; font-size: 10px; letter-spacing: .7px; text-transform: uppercase; }
-    .nav-label { padding: 0 10px; color: #9ba99e; font-size: 10px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+    .brand-subtitle { margin: 3px 0 0; color: #c7bbd1; font-size: 10px; letter-spacing: .7px; text-transform: uppercase; }
+    .nav-label { padding: 0 10px; color: #a99db2; font-size: 10px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
     .nav-list { display: grid; gap: 5px; margin: 10px 0 24px; }
     .nav-item {
       display: flex;
@@ -76,20 +76,20 @@
       border: 0;
       border-radius: 7px;
       background: transparent;
-      color: #c6d0c7;
+      color: #d4cadc;
       text-align: left;
     }
-    .nav-item:hover, .nav-item[aria-current="page"] { background: #344239; color: #fff; }
+    .nav-item:hover, .nav-item[aria-current="page"] { background: #42354f; color: #fff; }
     .nav-item[aria-current="page"] { box-shadow: inset 3px 0 var(--lime); }
-    .nav-count { color: #aebbb0; font-size: 12px; }
+    .nav-count { color: #c7bbd1; font-size: 12px; }
     .sidebar-spacer { flex: 1; }
-    .sheet-card { padding: 14px 13px; border: 1px solid #46544a; border-radius: 8px; background: #29352c; }
-    .sheet-card-label { margin: 0 0 7px; color: #b4c0b5; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-    .sheet-state { display: flex; align-items: center; gap: 7px; margin-bottom: 12px; color: #eef5ee; font-size: 12px; }
+    .sheet-card { padding: 14px 13px; border: 1px solid #51445d; border-radius: 8px; background: #332a3c; }
+    .sheet-card-label { margin: 0 0 7px; color: #c7bbd1; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    .sheet-state { display: flex; align-items: center; gap: 7px; margin-bottom: 12px; color: #f2edf5; font-size: 12px; }
     .state-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); }
     .sheet-link { display: block; color: var(--lime); font-size: 12px; font-weight: 600; text-decoration: none; }
     .sheet-link:hover { text-decoration: underline; }
-    .sidebar-foot { padding: 15px 9px 0; color: #9ba99e; font-size: 11px; line-height: 1.5; }
+    .sidebar-foot { padding: 15px 9px 0; color: #a99db2; font-size: 11px; line-height: 1.5; }
     .main { min-width: 0; padding: 29px clamp(18px, 4vw, 54px) 50px; }
     .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 30px; }
     .crumb { color: var(--muted); font-size: 12px; }
@@ -110,7 +110,7 @@
       text-decoration: none;
       transition: background .16s ease, transform .16s ease;
     }
-    .button:hover { background: #f4f8f3; transform: translateY(-1px); }
+    .button:hover { background: #f7f3fa; transform: translateY(-1px); }
     .button-primary { border-color: var(--green); background: var(--green); color: #fff; }
     .button-primary:hover { background: #10593e; }
     .button-symbol { font-size: 16px; line-height: 1; }
@@ -133,7 +133,7 @@
     .search-wrap { position: relative; }
     .search-icon { position: absolute; top: 50%; left: 11px; color: #78847b; transform: translateY(-50%); }
     .search-input { width: min(250px, 26vw); height: 36px; padding: 0 11px 0 32px; border: 1px solid var(--line); border-radius: 6px; background: white; outline: none; }
-    .search-input:focus, .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgb(23 107 76 / 12%); }
+    .search-input:focus, .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgb(99 61 135 / 12%); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); }
     table { width: 100%; border-collapse: collapse; text-align: left; }
     th { height: 39px; padding: 0 13px; border-bottom: 1px solid var(--line); color: #78847b; font-size: 10px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; white-space: nowrap; }
@@ -149,6 +149,8 @@
     .severity-high, .severity-critical { background: var(--red-soft); color: var(--red); }
     .status-select { max-width: 126px; padding: 5px 20px 5px 8px; border: 1px solid transparent; border-radius: 5px; background-color: transparent; color: #405047; font-size: 11px; }
     .status-select:hover, .status-select:focus { border-color: var(--line); background-color: white; }
+    .remove-case-button { min-height: 30px; padding: 0 8px; border: 1px solid #e8c4bf; border-radius: 5px; background: white; color: var(--red); font-size: 11px; font-weight: 650; }
+    .remove-case-button:hover { background: var(--red-soft); }
     .empty-state { padding: 45px 20px; color: var(--muted); text-align: center; }
     .empty-state strong { display: block; margin-bottom: 6px; color: var(--ink); font-family: Georgia, serif; font-size: 18px; font-weight: 500; }
     .table-footer { display: flex; justify-content: space-between; gap: 10px; padding: 11px 2px 0; color: var(--muted); font-size: 11px; }
@@ -165,6 +167,13 @@
     .field input, .field select, .field textarea { width: 100%; min-height: 37px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 5px; background: white; color: var(--ink); outline: none; }
     .field textarea { min-height: 82px; resize: vertical; }
     .form-actions { display: flex; justify-content: end; gap: 8px; grid-column: 1 / -1; padding-top: 5px; }
+    .member-list { display: grid; gap: 0; padding: 0 23px 10px; }
+    .member-account { display: grid; grid-template-columns: minmax(100px, .8fr) minmax(0, 1.2fr) auto; align-items: center; gap: 9px; padding: 11px 0; border-bottom: 1px solid #edf1ec; }
+    .member-account-name { overflow-wrap: anywhere; font-size: 12px; font-weight: 650; }
+    .reset-member-form { display: flex; gap: 6px; }
+    .reset-member-form input { min-width: 0; width: 100%; height: 32px; padding: 0 8px; border: 1px solid var(--line); border-radius: 5px; }
+    .small-button { min-height: 32px; padding: 0 9px; }
+    .member-help { margin: 0; padding: 0 23px 15px; color: var(--muted); font-size: 11px; line-height: 1.5; }
     .toast { position: fixed; right: 22px; bottom: 22px; z-index: 5; max-width: min(390px, calc(100% - 44px)); padding: 12px 15px; border: 1px solid #c8d8ca; border-radius: 6px; background: #fff; box-shadow: var(--shadow); color: var(--ink); font-size: 12px; animation: arrive .2s ease-out; }
     .toast[hidden] { display: none; }
     @keyframes arrive { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
@@ -182,7 +191,8 @@
       .nav-item { width: auto; min-width: max-content; min-height: 34px; padding: 0 10px; font-size: 11px; }
       .nav-count { margin-left: 7px; }
       .main { padding: 19px 14px 35px; }
-      .topbar { margin-bottom: 23px; }
+      .topbar { align-items: start; flex-direction: column; margin-bottom: 23px; }
+      .top-actions { width: 100%; flex-wrap: wrap; justify-content: flex-start; }
       .top-actions .button { min-height: 34px; padding: 0 9px; font-size: 11px; }
       .heading-row { align-items: start; }
       .date-label { display: none; }
@@ -200,6 +210,9 @@
       .form-grid { grid-template-columns: 1fr; padding: 16px; }
       .field.full, .form-actions { grid-column: auto; }
       .dialog-head { padding: 17px 16px 14px; }
+      .member-list { padding-right: 16px; padding-left: 16px; }
+      .member-account { grid-template-columns: 1fr; }
+      .member-help { padding-right: 16px; padding-left: 16px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
@@ -212,7 +225,7 @@
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">A</div>
         <div>
-          <p class="brand-title">Astral Cosmic Eunoia</p>
+          <p class="brand-title">ACE-CHRYSALIS</p>
           <p class="brand-subtitle">Community safety</p>
         </div>
       </div>
@@ -229,13 +242,14 @@
         <div class="sheet-state"><span class="state-dot" aria-hidden="true"></span>CSV handoff ready</div>
         <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1MN1lXTlbsdIkfdsejcjSiORPvK9NTbI09naYtPlOTSA/edit?usp=sharing" target="_blank" rel="noreferrer">Open Google Sheet <span aria-hidden="true">↗</span></a>
       </section>
-      <div class="sidebar-foot">Case data is saved in this browser. Use CSV to move records between this tracker and the sheet.</div>
+      <div class="sidebar-foot">Case data is shared with member accounts and saved on this server. Use CSV to exchange records with the sheet.</div>
     </aside>
 
     <main class="main">
       <header class="topbar">
         <div class="crumb">Community operations <span aria-hidden="true">/</span> Violations</div>
         <div class="top-actions">
+          <button class="button" id="members-button" type="button">Members</button>
           <button class="button" id="import-button" type="button"><span class="button-symbol" aria-hidden="true">↑</span>Import CSV</button>
           <button class="button" id="export-button" type="button"><span class="button-symbol" aria-hidden="true">↓</span>Export CSV</button>
           <form action="/api/logout" method="post"><button class="button" type="submit">Sign out</button></form>
@@ -244,7 +258,7 @@
 
       <section class="heading-row">
         <div>
-          <p class="eyebrow">Astral Cosmic Eunoia</p>
+          <p class="eyebrow">ACE-CHRYSALIS</p>
           <h1>Violation tracker</h1>
           <p class="page-description">A clear record of reports, reviews, and moderator actions.</p>
         </div>
@@ -267,12 +281,12 @@
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Case</th><th>Member</th><th>Violation</th><th>Severity</th><th>Status</th><th>Reported</th><th>Moderator</th></tr></thead>
+            <thead><tr><th>Case</th><th>Member</th><th>Violation</th><th>Severity</th><th>Status</th><th>Reported</th><th>Moderator</th><th>Actions</th></tr></thead>
             <tbody id="case-rows"></tbody>
           </table>
           <div class="empty-state" id="empty-state"><strong>No reports yet</strong>New reports will appear here as your team logs them.</div>
         </div>
-        <div class="table-footer"><span id="result-count">0 cases</span><span>Updates are stored in this browser</span></div>
+        <div class="table-footer"><span id="result-count">0 cases</span><span>Records are shared with member accounts</span></div>
       </section>
       <input id="file-input" type="file" accept=".csv,text/csv" hidden>
     </main>
@@ -291,16 +305,31 @@
         <div class="field"><label for="date-input">Report date *</label><input id="date-input" name="date" type="date" required></div>
         <div class="field"><label for="status-input">Status</label><select id="status-input" name="status"><option>New</option><option>Reviewing</option><option>Actioned</option><option>Resolved</option></select></div>
         <div class="field"><label for="moderator-input">Assigned moderator</label><input id="moderator-input" name="moderator" maxlength="80" placeholder="Unassigned"></div>
-        <div class="field full"><label for="notes-input">Notes</label><textarea id="notes-input" name="notes" maxlength="1200" placeholder="Brief context, relevant channel, and action taken"></textarea></div>
+        <div class="field"><label for="action-input">Action taken</label><select id="action-input" name="actionTaken"><option>None</option><option>Warning</option><option>Content removed</option><option>Temporary mute</option><option>Temporary ban</option><option>Permanent ban</option><option>Other</option></select></div>
+        <div class="field full"><label for="member-message-input">Message visible to member</label><textarea id="member-message-input" name="memberMessage" maxlength="1200" placeholder="Explain the report or action for the member"></textarea></div>
+        <div class="field full"><label for="notes-input">Private moderator notes</label><textarea id="notes-input" name="notes" maxlength="1200" placeholder="Internal moderation context. Members cannot see these notes."></textarea></div>
         <div class="form-actions"><button class="button" id="cancel-dialog" type="button">Cancel</button><button class="button button-primary" type="submit">Save report</button></div>
       </div>
     </form>
+  </dialog>
+  <dialog id="members-dialog" aria-labelledby="members-dialog-title">
+    <div class="dialog-head">
+      <div><h2 id="members-dialog-title">Member access</h2><p>Create accounts and reset member passcodes.</p></div>
+      <button class="icon-button" id="close-members-dialog" type="button" aria-label="Close member access">×</button>
+    </div>
+    <form id="member-form" class="form-grid">
+      <div class="field"><label for="new-member-name">Member name *</label><input id="new-member-name" name="username" maxlength="80" required placeholder="Must match case reports"></div>
+      <div class="field"><label for="new-member-passcode">Member passcode *</label><input id="new-member-passcode" name="passcode" type="text" minlength="12" maxlength="1024" required autocomplete="new-password" placeholder="At least 12 characters"></div>
+      <div class="form-actions"><button class="button button-primary" type="submit">Create account</button></div>
+    </form>
+    <p class="member-help">Share the passcode with that member privately. Their account only shows reports filed under the matching member name.</p>
+    <div class="member-list" id="member-list" aria-live="polite"></div>
   </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script>
     (() => {
-      const storageKey = "ace-violation-tracker-cases-v1";
+      const legacyStorageKey = "ace-violation-tracker-cases-v1";
       const statuses = ["New", "Reviewing", "Actioned", "Resolved"];
       const elements = {
         rows: document.querySelector("#case-rows"),
@@ -309,27 +338,24 @@
         form: document.querySelector("#case-form"),
         search: document.querySelector("#search-input"),
         file: document.querySelector("#file-input"),
-        toast: document.querySelector("#toast")
+        toast: document.querySelector("#toast"),
+        membersDialog: document.querySelector("#members-dialog"),
+        membersList: document.querySelector("#member-list"),
+        memberForm: document.querySelector("#member-form")
       };
-      let cases = loadCases();
+      let cases = [];
       let activeFilter = "all";
       let toastTimer;
 
-      function loadCases() {
-        try {
-          const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
-          return Array.isArray(saved) ? saved.filter(isCase) : [];
-        } catch {
-          return [];
-        }
-      }
-
-      function isCase(item) {
-        return item && typeof item.id === "string" && typeof item.username === "string" && typeof item.category === "string" && statuses.includes(item.status);
-      }
-
-      function saveCases() {
-        localStorage.setItem(storageKey, JSON.stringify(cases));
+      async function request(path, options = {}) {
+        const response = await fetch(path, {
+          credentials: "same-origin",
+          ...options,
+          headers: { ...(options.body ? { "Content-Type": "application/json" } : {}), ...options.headers }
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "The request could not be completed.");
+        return result;
       }
 
       function escapeHtml(value) {
@@ -364,6 +390,7 @@
             <td><select class="status-select" data-case-id="${escapeHtml(item.id)}" aria-label="Status for ${escapeHtml(item.id)}">${statusOptions}</select></td>
             <td>${escapeHtml(formatDate(item.date))}</td>
             <td>${escapeHtml(item.moderator || "Unassigned")}</td>
+            <td><button class="remove-case-button" type="button" data-case-id="${escapeHtml(item.id)}" aria-label="Remove case ${escapeHtml(item.id)}">Remove</button></td>
           </tr>`;
         }).join("");
         elements.empty.hidden = visible.length > 0;
@@ -403,8 +430,8 @@
       }
 
       function exportCsv() {
-        const headers = ["case_id", "username", "category", "severity", "reported_at", "status", "moderator", "notes"];
-        const lines = [headers, ...cases.map(item => [item.id, item.username, item.category, item.severity, item.date, item.status, item.moderator, item.notes])].map(row => row.map(csvCell).join(","));
+        const headers = ["case_id", "username", "category", "severity", "reported_at", "status", "moderator", "action_taken", "member_message", "notes"];
+        const lines = [headers, ...cases.map(item => [item.id, item.username, item.category, item.severity, item.date, item.status, item.moderator, item.actionTaken, item.memberMessage, item.notes])].map(row => row.map(csvCell).join(","));
         const blob = new Blob(["\ufeff", lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
@@ -433,7 +460,7 @@
         return matrix.filter(line => line.some(value => value.trim() !== ""));
       }
 
-      function importCsv(text) {
+      async function importCsv(text) {
         const matrix = parseCsv(text.replace(/^\ufeff/, ""));
         if (matrix.length < 2) throw new Error("The CSV has no case rows.");
         const headers = matrix[0].map(value => value.trim().toLowerCase().replace(/[\s-]+/g, "_").replace(/[()]/g, ""));
@@ -446,6 +473,8 @@
           date: indexOf("reported_at", "date", "report_date"),
           status: indexOf("status"),
           moderator: indexOf("moderator", "assigned_moderator"),
+          actionTaken: indexOf("action_taken", "action"),
+          memberMessage: indexOf("member_message", "public_message"),
           notes: indexOf("notes", "details")
         };
         if ([columns.username, columns.category, columns.status].some(index => index < 0)) throw new Error("Required headers: username, category, and status.");
@@ -461,17 +490,45 @@
             date: value("date"),
             status: status || "New",
             moderator: value("moderator"),
+            actionTaken: ["None", "Warning", "Content removed", "Temporary mute", "Temporary ban", "Permanent ban", "Other"].find(option => option.toLowerCase() === value("actionTaken").toLowerCase()) || "None",
+            memberMessage: value("memberMessage"),
             notes: value("notes")
           };
         }).filter(item => item.username && item.category);
-        const byId = new Map(cases.map(item => [item.id, item]));
-        imported.forEach(item => byId.set(item.id, item));
-        const added = imported.filter(item => !cases.some(existing => existing.id === item.id)).length;
-        const updated = imported.length - added;
-        cases = [...byId.values()];
-        saveCases();
+        const result = await request("/api/cases/import", { method: "POST", body: JSON.stringify({ cases: imported }) });
+        cases = result.cases;
         render();
-        showToast(`Imported ${added} new ${added === 1 ? "case" : "cases"}; updated ${updated} existing.`);
+        showToast(`Imported ${result.added} new ${result.added === 1 ? "case" : "cases"}; updated ${result.updated} existing.`);
+      }
+
+      async function refreshMembers() {
+        const result = await request("/api/members");
+        elements.membersList.innerHTML = result.members.map(member => `<div class="member-account">
+          <span class="member-account-name">${escapeHtml(member.username)}</span>
+          <form class="reset-member-form" data-username="${escapeHtml(member.username)}">
+            <input name="passcode" type="password" minlength="12" maxlength="1024" required autocomplete="new-password" aria-label="New passcode for ${escapeHtml(member.username)}" placeholder="New passcode">
+            <button class="button small-button" type="submit">Reset</button>
+          </form>
+        </div>`).join("") || `<p class="member-help">No member accounts yet.</p>`;
+      }
+
+      async function initialize() {
+        try {
+          const result = await request("/api/cases");
+          cases = result.cases;
+          let legacyCases = [];
+          try {
+            const saved = JSON.parse(localStorage.getItem(legacyStorageKey) || "[]");
+            if (Array.isArray(saved)) legacyCases = saved;
+          } catch { /* Ignore unavailable or malformed browser data. */ }
+          if (legacyCases.length) {
+            const migration = await request("/api/cases/import", { method: "POST", body: JSON.stringify({ cases: legacyCases }) });
+            cases = migration.cases;
+            localStorage.removeItem(legacyStorageKey);
+            showToast(`Moved ${legacyCases.length} browser-saved ${legacyCases.length === 1 ? "case" : "cases"} to shared storage.`);
+          }
+        } catch (error) { showToast(error.message); }
+        render();
       }
 
       document.querySelector("#today-label").textContent = new Intl.DateTimeFormat(undefined, { weekday: "long", month: "long", day: "numeric" }).format(new Date());
@@ -483,28 +540,51 @@
       });
       document.querySelector("#close-dialog").addEventListener("click", () => elements.dialog.close());
       document.querySelector("#cancel-dialog").addEventListener("click", () => elements.dialog.close());
-      elements.form.addEventListener("submit", event => {
+      elements.form.addEventListener("submit", async event => {
         event.preventDefault();
         const formData = new FormData(elements.form);
-        cases.push({
+        const item = {
           id: makeCaseId(),
           username: formData.get("username").trim(),
           category: formData.get("category"),
           severity: formData.get("severity"),
           date: formData.get("date"),
           status: formData.get("status"),
+          actionTaken: formData.get("actionTaken"),
+          memberMessage: formData.get("memberMessage").trim(),
           moderator: formData.get("moderator").trim(),
           notes: formData.get("notes").trim()
-        });
-        saveCases();
-        render();
-        elements.dialog.close();
-        showToast("Report saved in this browser.");
+        };
+        try {
+          const result = await request("/api/cases", { method: "POST", body: JSON.stringify(item) });
+          cases.push(result.case);
+          render();
+          elements.dialog.close();
+          showToast("Report saved and shared with the member portal.");
+        } catch (error) { showToast(error.message); }
       });
-      elements.rows.addEventListener("change", event => {
+      elements.rows.addEventListener("change", async event => {
         if (!event.target.matches(".status-select")) return;
         const item = cases.find(record => record.id === event.target.dataset.caseId);
-        if (item) { item.status = event.target.value; saveCases(); render(); }
+        if (!item) return;
+        try {
+          const result = await request(`/api/cases/${encodeURIComponent(item.id)}`, { method: "PATCH", body: JSON.stringify({ status: event.target.value }) });
+          Object.assign(item, result.case);
+          render();
+        } catch (error) { showToast(error.message); render(); }
+      });
+      elements.rows.addEventListener("click", async event => {
+        const button = event.target.closest(".remove-case-button");
+        if (!button) return;
+        const item = cases.find(record => record.id === button.dataset.caseId);
+        if (!item || !window.confirm(`Remove case ${item.id}? This cannot be undone.`)) return;
+        button.disabled = true;
+        try {
+          await request(`/api/cases/${encodeURIComponent(item.id)}`, { method: "DELETE" });
+          cases = cases.filter(record => record.id !== item.id);
+          render();
+          showToast(`Case ${item.id} removed.`);
+        } catch (error) { showToast(error.message); render(); }
       });
       elements.search.addEventListener("input", render);
       document.querySelectorAll(".nav-item").forEach(button => button.addEventListener("click", () => {
@@ -515,17 +595,45 @@
       }));
       document.querySelector("#export-button").addEventListener("click", exportCsv);
       document.querySelector("#import-button").addEventListener("click", () => elements.file.click());
+      document.querySelector("#members-button").addEventListener("click", async () => {
+        try {
+          await refreshMembers();
+          elements.membersDialog.showModal();
+        } catch (error) { showToast(error.message); }
+      });
+      document.querySelector("#close-members-dialog").addEventListener("click", () => elements.membersDialog.close());
+      elements.memberForm.addEventListener("submit", async event => {
+        event.preventDefault();
+        const formData = new FormData(elements.memberForm);
+        try {
+          await request("/api/members", { method: "POST", body: JSON.stringify({ username: formData.get("username").trim(), passcode: formData.get("passcode") }) });
+          elements.memberForm.elements.username.value = "";
+          await refreshMembers();
+          showToast("Member account created. Share the passcode privately.");
+        } catch (error) { showToast(error.message); }
+      });
+      elements.membersList.addEventListener("submit", async event => {
+        const form = event.target.closest(".reset-member-form");
+        if (!form) return;
+        event.preventDefault();
+        const passcode = new FormData(form).get("passcode");
+        try {
+          await request(`/api/members/${encodeURIComponent(form.dataset.username)}`, { method: "PUT", body: JSON.stringify({ passcode }) });
+          form.reset();
+          showToast("Member passcode reset. Share the new passcode privately.");
+        } catch (error) { showToast(error.message); }
+      });
       elements.form.addEventListener("keydown", event => {
         if (event.key === "Escape" && elements.dialog.open) elements.dialog.close();
       });
       elements.file.addEventListener("change", async () => {
         const file = elements.file.files[0];
         if (!file) return;
-        try { importCsv(await file.text()); }
+        try { await importCsv(await file.text()); }
         catch (error) { showToast(error.message || "Could not read that CSV file."); }
         elements.file.value = "";
       });
-      render();
+      initialize();
     })();
   </script>
 </body>
