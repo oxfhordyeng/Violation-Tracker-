@@ -262,7 +262,7 @@ async function handleRequest(req, res) {
     return;
   }
 
-  if (req.method === "POST" && ["/api/setup", "/api/login", "/api/logout"].includes(url.pathname)) {
+  if (req.method === "POST" && ["/api/setup", "/api/login"].includes(url.pathname)) {
     if (!originAllowed(req)) {
       sendJson(res, 403, { error: "Request origin not allowed." });
       return;
