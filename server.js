@@ -137,7 +137,12 @@ function readJson(req) {
 
 function originAllowed(req) {
   if (!req.headers.origin) return true;
-  try { return new URL(req.headers.origin).host === req.headers.host; }
+  try {
+    const origin = new URL(req.headers.origin);
+    return process.env.PUBLIC_ORIGIN
+      ? origin.origin === new URL(process.env.PUBLIC_ORIGIN).origin
+      : origin.host === req.headers.host;
+  }
   catch { return false; }
 }
 
