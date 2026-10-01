@@ -5,7 +5,7 @@ const { createServer } = require("node:http");
 const { join } = require("node:path");
 
 const root = __dirname;
-const dataDirectory = join(root, ".data");
+const dataDirectory = process.env.DATA_DIR || join(root, ".data");
 const dataPath = join(dataDirectory, "tracker.json");
 const sessionCookie = "ace_portal";
 const sessionLifetime = 12 * 60 * 60 * 1000;
